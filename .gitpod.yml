@@ -1,0 +1,22 @@
+tasks:
+  # NOTE: live-reload doesn't work yet
+  #       https://github.com/gitpod-io/gitpod/issues/3282
+  - init: npm install
+    command: |
+      export PORT="4200"
+      export HOST="$(gp url $PORT)"
+
+      gp open app/templates/application.hbs
+      npm run start
+      { gp await-port $PORT && gp preview $HOST & } &> /dev/null
+ports:
+  - port: 4200
+    onOpen: ignore
+vscode:
+  extensions:
+    # Base Glimmer Syntax
+    - lifeart.vscode-glimmer-syntax
+    # Syntax extensions to other languages
+    - chiragpat.vscode-glimmer
+    # Language Server for Improved DX in Ember Projects
+    - lifeart.vscode-ember-unstable
