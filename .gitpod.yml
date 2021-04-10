@@ -3,12 +3,11 @@ tasks:
   #       https://github.com/gitpod-io/gitpod/issues/3282
   - init: npm install
     command: |
-      export PORT="4200"
-      export HOST="$(gp url $PORT)"
+      export HOST="$(gp url 4200)"
 
       gp open app/templates/application.hbs
-      npm run start
-      { gp await-port $PORT && gp preview $HOST & } &> /dev/null
+      npm run start -p 4200
+      { gp await-port 4200 && gp preview $HOST & } &> /dev/null
 ports:
   - port: 4200
     onOpen: ignore
