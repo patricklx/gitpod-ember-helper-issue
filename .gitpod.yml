@@ -6,8 +6,8 @@ tasks:
       export HOST="$(gp url 4200)"
 
       gp open app/templates/application.hbs
-      npm run start -p 4200
       { gp await-port 4200 && sleep 5 && gp preview $HOST & } &> /dev/null
+      npm run start -p 4200
 ports:
   - port: 4200
     onOpen: ignore
