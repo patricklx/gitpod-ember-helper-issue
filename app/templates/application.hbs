@@ -1,7 +1,10 @@
 {{page-title "MyApp"}}
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+{{my-helper 0}}
+{{this.myHelper 1}}
+{{#let (helper this.myHelper) as |h|}}
+  {{h 2}}
+{{/let}}
+
 
 {{outlet}}
